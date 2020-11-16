@@ -3,6 +3,7 @@ const router = express.Router();
 const postCtrl = require('../controllers/posts');
 const authorization = require('../utils/authorization');
 
-router.get('/post', authorization.isAuthenticated, postCtrl.post);
+
+router.get('/', authorization.isAuthenticated, postCtrl.index);
 
 module.exports = router;

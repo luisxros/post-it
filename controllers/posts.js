@@ -1,9 +1,17 @@
 // const Post = require('../models/post');
 
 module.exports = {
-    new: newPost
+    index,
+    signOut
 };
 
-function newPost(req, res){
-    res.render('posts/post');
-}
+function index(req, res){
+    res.render('posts/index');
+};
+
+function signOut(req, res) {
+    req.session.destroy(function(err){
+        delete req.user;
+        res.redirect('/')
+    });
+};

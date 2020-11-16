@@ -1,10 +1,12 @@
 // require modules
 const express = require('express');
 const morgan = require('morgan');
+const authorization = require('./utils/authorization');
 const port = 3000;
 const session = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const postsRouter = require('./routes/posts');
 
 // set up express app
 const app = express();
@@ -25,10 +27,12 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(authorization.addUserToRequest);
 
 // mount routes with app.use()
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 
 // tell app to listen
 app.listen(port, function() {

@@ -45,7 +45,7 @@ function login(req, res) {
             if (doesPasswordMatch) {
                 req.session.userId = foundUser._id;
                 console.log(req.session)
-                res.redirect('/posts/post');
+                res.redirect('/posts');
             } else {
                 res.redirect('/users/signin');
             }
