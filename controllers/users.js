@@ -6,6 +6,7 @@ module.exports = {
     new: newUser,
     signUp,
     signIn,
+    signOut,
     login
 };
 
@@ -25,6 +26,14 @@ function signIn(req, res) {
     res.render('users/login');
 };
 
+function signOut(req, res) {
+    req.session.destroy(function(err){
+        delete req.user;
+        res.redirect('/')
+    });
+};
+
+
 function login(req, res) {
     User.findOne({
         username: req.body.username
@@ -36,7 +45,7 @@ function login(req, res) {
             if (doesPasswordMatch) {
                 req.session.userId = foundUser._id;
                 console.log(req.session)
-                res.redirect('/');
+                res.redirect('/posts/post');
             } else {
                 res.redirect('/users/signin');
             }
