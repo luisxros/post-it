@@ -8,7 +8,7 @@ router.get('/', postsCtrl.index);
 
 router.get('/posts', postsCtrl.new);
 
-router.post('/posts',postsCtrl.create)
+router.post('/',postsCtrl.create)
 
 router.get('/', authorization.isAuthenticated, postsCtrl.index);
 

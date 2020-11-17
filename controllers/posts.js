@@ -19,7 +19,7 @@ function newPost(req, res){
 
 function create(req, res){
     Post.create(req.body, function(err, post){
-        res.render('/posts')
+        res.redirect('/posts')
     });
 };
 
@@ -27,7 +27,6 @@ function create(req, res){
 function signOut(req, res) {
     req.session.destroy(function(err){
         delete req.user;
-        res.redirect('/')
+        res.redirect('/posts')
     });
 };
-
