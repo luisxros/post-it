@@ -17,5 +17,18 @@
     </nav>
     </header>
     <h1>Welcome to Posts</h1>
+
+    <div>
+        
+        <% posts.forEach(function(post){ %>
+
+            <%= post.body %>
+            
+            <form action="/posts" method="POST">
+                <textarea name="body" id="" cols="10" rows="3"></textarea>
+                <input type="submit" value="Post">
+            </form>
+            <% }); %>
+    </div>
 </body>
 </html>

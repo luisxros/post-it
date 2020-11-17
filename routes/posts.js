@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const postCtrl = require('../controllers/posts');
+const postsCtrl = require('../controllers/posts');
 const authorization = require('../utils/authorization');
 
 
-router.get('/', authorization.isAuthenticated, postCtrl.index);
+router.get('/', postsCtrl.index);
+
+router.get('/posts', postsCtrl.new);
+
+router.post('/posts',postsCtrl.create)
+
+router.get('/', authorization.isAuthenticated, postsCtrl.index);
 
 module.exports = router;

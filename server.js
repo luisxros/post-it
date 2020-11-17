@@ -1,9 +1,11 @@
 // require modules
 const express = require('express');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 const authorization = require('./utils/authorization');
 const port = 3000;
 const session = require('express-session');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
@@ -19,6 +21,7 @@ app.set('view engine', 'ejs');
 
 // mount middleware with app.use()
 app.use(morgan('dev'));
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
