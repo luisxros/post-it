@@ -10,6 +10,13 @@ router.get('/posts', postsCtrl.new);
 
 router.post('/',postsCtrl.create)
 
+router.delete('/:id', postsCtrl.delete);
+
+router.get('/:id', postsCtrl.edit);
+
+router.put('/:id', postsCtrl.update);
+
 router.get('/', authorization.isAuthenticated, postsCtrl.index);
+
 
 module.exports = router;

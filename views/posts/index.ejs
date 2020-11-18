@@ -1,34 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Posts</title>
 </head>
+
 <body>
     <header>
         <h1>Post-It</h1>
-    <nav>
-        <ul>
-            <li>
-                <a href="/users/signout">Log out</a>
-            </li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/users/signout">Log out</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <h1>Welcome to Posts</h1>
 
-    <div>
+    <div id="post">
+
+        <form id="post-form" action="/posts" method="POST">
+            <textarea id="post-text" name="body" id="" cols="50" rows="3"></textarea>
+            <input type="submit" value="Post-It!">
+        </form>
 
         <% posts.forEach(function(post){ %>
 
-            <%= post.body %>  </br>
-            
+        <%= post.body %> </br>
+
+        <form id="delete-form" action="/posts/<%= post._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+
+        <form id="edit-form" action="/posts/<%= post._id%>?_method=PUT" method="POST">
+            <!-- <textarea id="edit-text" name="body" id="" cols="50" rows="3"><%= post.body %></textarea> -->
+            <input type="submit" value="Edit">
+        </form>
+
+        
+
+        <div id="comment">
+            <% if(post.comments.length) { %>
+                <div><h2>Comments:</h2></div>
+
+            <% post.comments.forEach(function(comment){ %>
+
+                <div><%= comment.content %></div>
+
             <% }); %>
-            <form action="/posts" method="POST">
-                <textarea name="body" id="" cols="50" rows="3"></textarea>
-                <input type="submit" value="Post">
+
+            <% } else { %>
+                <h5>No comments yet</h5>
+
+           <% } %>
+
+           <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
+            <label>Comment:</label>
+            <textarea name="content"></textarea>
+            <input type="submit" value="Add Comment">
+
+
             </form>
+
+        </div>
+
+
+        <% }); %>
     </div>
 </body>
+
 </html>

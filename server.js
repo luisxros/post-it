@@ -9,6 +9,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
+const commentsRouter = require('./routes/comments');
 
 // set up express app
 const app = express();
@@ -36,6 +37,7 @@ app.use(authorization.addUserToRequest);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/', commentsRouter);
 
 // tell app to listen
 app.listen(port, function() {
