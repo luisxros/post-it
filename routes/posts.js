@@ -4,7 +4,7 @@ const postsCtrl = require('../controllers/posts');
 const authorization = require('../utils/authorization');
 
 
-router.get('/', postsCtrl.index);
+router.get('/', authorization.isAuthenticated, postsCtrl.index);
 
 router.get('/posts', postsCtrl.new);
 
@@ -16,7 +16,7 @@ router.get('/:id', postsCtrl.edit);
 
 router.put('/:id', postsCtrl.update);
 
-router.get('/posts', authorization.isAuthenticated, postsCtrl.index);
+// router.get('/posts', , postsCtrl.index);
 
 
 module.exports = router;

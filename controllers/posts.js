@@ -9,7 +9,6 @@ module.exports = {
     edit,
     update,
     signOut,
-    posts
 };
 
 function index(req, res){
@@ -53,6 +52,3 @@ function signOut(req, res) {
     });
 };
 
-function posts(req, res) {
-    res.render('/posts')
-}
