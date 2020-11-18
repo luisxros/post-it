@@ -7,7 +7,8 @@ module.exports = {
     signUp,
     signIn,
     signOut,
-    login
+    login,
+    
 };
 
 function newUser(req, res) {
@@ -18,7 +19,7 @@ function signUp(req, res){
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(SALT_ROUNDS));
     User.create(req.body, function (err, newUser){
         console.log(newUser)
-        res.redirect('/');
+        res.redirect('/users/signin');
     });
 };
 
@@ -52,3 +53,4 @@ function login(req, res) {
         }
     });
 }
+

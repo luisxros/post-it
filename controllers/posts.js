@@ -8,7 +8,8 @@ module.exports = {
     delete: deletePost,
     edit,
     update,
-    signOut
+    signOut,
+    posts
 };
 
 function index(req, res){
@@ -51,3 +52,7 @@ function signOut(req, res) {
         res.redirect('/posts')
     });
 };
+
+function posts(req, res) {
+    res.render('/posts')
+}

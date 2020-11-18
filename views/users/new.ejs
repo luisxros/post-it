@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Post-It</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <title>Post-It</title>
 </head>
+
 <body>
-    
-      
-        <div class="container">
-          <label for="username"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="username" required>
-      
-          <label for="password"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-      
-          <button type="submit">Signup</button>
-          
-        </div>
-      
-        <div class="container">
-          <button type="button" class="cancelbtn"><a href="/"> Cancel </a></button>
-          <span class="login"> <a href="/users/signin">Login</a></span>
-        </div>
-      </form>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Post-It</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="/users/new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/users/signin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <form action="/users/signup" method="POST">
+    <div class="container">
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+
+      <button type="submit">Signup</button>
+  </form>
+  </div>
+
+  <div class="container">
+    <button type="button" class="cancelbtn"><a href="/"> Cancel </a></button>
+    <span class="login"> <a href="/users/signin">Login</a></span>
+  </div>
+  </form>
 </body>
+
 </html>

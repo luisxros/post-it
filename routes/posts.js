@@ -16,7 +16,7 @@ router.get('/:id', postsCtrl.edit);
 
 router.put('/:id', postsCtrl.update);
 
-router.get('/', authorization.isAuthenticated, postsCtrl.index);
+router.get('/posts', authorization.isAuthenticated, postsCtrl.index);
 
 
 module.exports = router;
