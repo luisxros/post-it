@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+
+#edit-form {
+    display: none;
+}
+
+#post1 {
+    
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 15px;
+    /* border: 2px solid black; */
+    width: 50%;
+    word-break: break-all;
+    margin-left: 25%;
+
+
+
+}
+
+#post-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-left: 3.5%;
+}
+
+textarea{
+    /* resize: none; */
+    border: 4px solid black;
+    border-radius: 5px;
+}
+
+body {
+    background-color : #484848;
+    margin: 0;
+    padding:0;
+    
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    
+}
