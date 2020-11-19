@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=/css/posts.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/posts.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Posts</title>
 </head>
@@ -12,67 +13,92 @@
 <body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Post-It</a>
-          </div>
-         
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/users/signout"><span class="glyphicon glyphicon-log-out"></span> Log-Out</a></li>
-          </ul>
+            <div class="navbar-header">
+                <a class="navbar-brand">Post-It</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/users/signout"><span class="glyphicon glyphicon-log-out"></span> Log-Out</a></li>
+            </ul>
         </div>
-      </nav>
+    </nav>
     <h1>Welcome to Posts</h1>
 
-    <div id="post">
+    <section id="post-page">
+        <div id="post">
 
-        <form id="post-form" action="/posts" method="POST">
-            <textarea id="post-text" name="body" id="" cols="50" rows="3"></textarea>
-            <input type="submit" value="Post-It!">
-        </form>
+            <!----------------------------- Create-form --------------------------------->
 
-        <% posts.forEach(function(post){ %>
-
-        <%= post.body %> </br>
-
-        <form id="delete-form" action="/posts/<%= post._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete">
-        </form>
-
-        <form id="edit-form" action="/posts/<%= post._id%>?_method=PUT" method="POST">
-            <!-- <textarea id="edit-text" name="body" id="" cols="50" rows="3"><%= post.body %></textarea> -->
-            <input type="submit" value="Edit">
-        </form>
-
-        
-
-        <div id="comment">
-            <% if(post.comments.length) { %>
-                <div><h2>Comments:</h2></div>
-
-            <% post.comments.forEach(function(comment){ %>
-
-                <div><%= comment.content %></div>
-               
-
-            <% }); %>
-
-            <% } else { %>
-                <h5>No comments yet</h5>
-
-           <% } %>
-
-           <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
-            <label>Comment:</label>
-            <textarea name="content"></textarea>
-            <input type="submit" value="Add Comment">
-
-
+            <form id="post-form" action="/posts" method="POST">
+                <textarea id="post-text" name="body" id="" cols="60" rows="2"></textarea>
+                <input id="post-btn" type="submit" value="Post-It!">
             </form>
 
+            <% posts.forEach(function(post){ %>
+
+            <div id="post1">
+
+                <%= post.body %> </br>
+
+            </div>
+            <!----------------------------- Delete-form ---------------------------------->
+
+            <form id="delete-form" action="/posts/<%= post._id%>?_method=DELETE" method="POST">
+                <input id="delete-btn" type="submit" value="Delete">
+            </form>
+
+
+            <!------------------------------ Edit-form ------------------------------------>
+
+
+            <button type="button" id="edit-btn">Edit</button>
+
+            <script>
+                $("#edit-btn").click(function () {
+                    $("#edit-form").toggle();
+                });
+            </script>
+
+
+            <form id="edit-form" action="/posts/<%= post._id%>?_method=PUT" method="POST">
+                <textarea name="body" id="edit-text" cols="50" rows="1"><%= post.body %></textarea>
+                <input id="update-btn" type="submit" value="Update">
+            </form>
+
+    </section>
+
+
+
+    <!-------------------------------- Commentd section ---------------------------------->
+    <div id="comment">
+        <% if(post.comments.length) { %>
+        <div>
+            <h2>Comments:</h2>
         </div>
+
+        <% post.comments.forEach(function(comment){ %>
+
+        <div id="comment1"><%= comment.content %></div>
 
 
         <% }); %>
+
+        <% } else { %>
+        <h5>No comments yet</h5>
+
+        <% } %>
+
+        <form id="add-comment-form" action="/posts/<%= post._id %>/comments" method="POST">
+            <textarea name="content" id="comment-post" cols="50" rows="1"></textarea>
+            <input id="comment-btn" type="submit" value="Add Comment">
+
+
+        </form>
+
+    </div>
+
+
+    <% }); %>
     </div>
 </body>
 
