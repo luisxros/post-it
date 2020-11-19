@@ -1,5 +1,7 @@
 // require modules
 const express = require('express');
+const $ = require('jquery');
+const jsdom = require('jsdom');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const authorization = require('./utils/authorization');
