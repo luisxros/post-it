@@ -24,7 +24,7 @@ a simple web application where you can post your thoughts, as well as comment on
 
 ## Getting started
 
-[Click here]() to see the deployed app!
+[Click here](https://post-it-appx.herokuapp.com/) to see the deployed app!
 
 ## Future Enhancements
 
