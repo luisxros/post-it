@@ -1,13 +1,23 @@
+/* Google fonts Goldman */
+
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
   }
 
+  body{
+    font-family: 'Goldman', cursive;
+  }
+
 form {
     border: 3px solid #f1f1f1;
+    
 }
 header{
   text-align: center;
+  font-family: 'Goldman';
 }
 
   
@@ -21,6 +31,7 @@ header{
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    font-family: 'Goldman';
   }
   
   
@@ -33,6 +44,7 @@ header{
     cursor: pointer;
     width: 100%;
     border-radius: 10px;
+    font-family: 'Goldman';
     
   }
   
@@ -47,35 +59,47 @@ header{
     padding: 10px 18px;
     background-color: red ;
     border-radius: 5%;
+    font-family: 'Goldman';
     
   }
-  
-  
-  
-
   
   
   .container {
     width: 500px;
     clear: both;
     padding: 16px;
+    font-family: 'Goldman';
   }
 
   .container input {
     width: 100%;
     clear: both;
+    font-family: 'Goldman';
   }
   
   
   span.signup {
     float: right;
     padding-top: 16px;
+    font-family: 'Goldman';
     
   }
   span.login {
     float: right;
     padding-top: 16px;
+    font-family: 'Goldman';
     
+  }
+
+  p {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+    font-family: 'Goldman';
+  }
+
+  nav, ul {
+    font-family: 'Goldman';
   }
   
   
