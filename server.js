@@ -1,11 +1,9 @@
 // require modules
 const express = require('express');
-const $ = require('jquery');
-const jsdom = require('jsdom');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const authorization = require('./utils/authorization');
-const port = 3000;
+const port = process.env.PORT || 3000;
 const session = require('express-session');
 
 const indexRouter = require('./routes/index');
@@ -15,6 +13,8 @@ const commentsRouter = require('./routes/comments');
 
 // set up express app
 const app = express();
+
+require('dotenv').config();
 
 // connect to DB
 require('./config/database');
@@ -29,7 +29,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(session({
-    secret: 'keyboardcat',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }));
